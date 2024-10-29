@@ -174,10 +174,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       successOverlay.style.display = 'flex';
 
-      document.getElementById('new-registration').addEventListener('click', () => {
-        successOverlay.style.display = 'none';
-        resetForm();
-      }, { once: true });
+      // Verwijder de oude action buttons als ze bestaan
+      const existingActionButtons = document.querySelector('.action-buttons');
+      if (existingActionButtons) {
+        existingActionButtons.remove();
+      }
 
       const actionButtons = document.createElement('div');
       actionButtons.className = 'action-buttons';
@@ -188,8 +189,14 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       document.querySelector('.success-content').appendChild(actionButtons);
 
+      // Event listeners toevoegen
       document.getElementById('print-confirmation').addEventListener('click', () => {
         printConfirmation(formData);
+      });
+
+      document.getElementById('new-registration').addEventListener('click', () => {
+        successOverlay.style.display = 'none';
+        resetForm();
       });
     };
 
