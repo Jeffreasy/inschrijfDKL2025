@@ -7,6 +7,10 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     setIsMounted(true)
+    // Stuur een bericht naar de parent window dat de app is geladen
+    if (window.parent) {
+      window.parent.postMessage({ type: 'APP_LOADED' }, '*')
+    }
   }, [])
 
   if (!isMounted) {
@@ -18,7 +22,7 @@ const Home: NextPage = () => {
       <Head>
         <title>Inschrijfformulier Koninklijke Loop 2025</title>
         <meta name="description" content="Inschrijven voor de Koninklijke Loop 2025" />
-        <meta httpEquiv="Content-Security-Policy" content="frame-ancestors 'self' https://*.webflow.io https://*.webflow.com" />
+        <meta httpEquiv="Content-Security-Policy" content="frame-ancestors 'self' https://*.webflow.io https://*.webflow.com https://*.koninklijkeloop.nl https://vercel.live" />
       </Head>
 
       <main className="min-h-screen bg-orange-100 p-4">
@@ -43,7 +47,11 @@ const Home: NextPage = () => {
                 <p>2,5, 5, 10 en 15 KM</p>
               </div>
             </div>
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={(e) => {
+              e.preventDefault()
+              // Implementeer hier uw formulier verzendlogica
+              console.log('Formulier verzonden')
+            }}>
               <div>
                 <label htmlFor="naam" className="block text-sm font-medium text-gray-700">Naam: *</label>
                 <input type="text" id="naam" name="naam" required className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-orange-300 focus:ring focus:ring-orange-200 focus:ring-opacity-50" />
