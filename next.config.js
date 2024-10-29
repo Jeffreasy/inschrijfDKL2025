@@ -7,9 +7,17 @@ module.exports = {
         headers: [
           {
             key: 'X-Frame-Options',
-            value: 'ALLOW-FROM https://*.webflow.io https://*.koninklijkeloop.nl',
+            value: 'SAMEORIGIN',
           },
         ],
+      },
+    ]
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/:path*',
+        destination: '/:path*',
       },
     ]
   },

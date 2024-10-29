@@ -9,7 +9,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/"
+      "dest": "/$1"
     }
   ],
   "headers": [
@@ -18,11 +18,11 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self' https://*.webflow.io https://*.koninklijkeloop.nl; connect-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' 'unsafe-eval'; frame-ancestors 'self' https://*.webflow.io https://*.koninklijkeloop.nl; img-src 'self' data: https://*.webflow.io https://*.koninklijkeloop.nl; font-src 'self' https://fonts.gstatic.com"
+          "value": "default-src 'self' https://*.webflow.io https://*.koninklijkeloop.nl https://fonts.googleapis.com https://fonts.gstatic.com; connect-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' 'unsafe-eval'; frame-ancestors 'self' https://*.webflow.io https://*.koninklijkeloop.nl; img-src 'self' data: https://*.webflow.io https://*.koninklijkeloop.nl; font-src 'self' https://fonts.gstatic.com"
         },
         {
           "key": "X-Frame-Options",
-          "value": "ALLOW-FROM https://*.webflow.io https://*.koninklijkeloop.nl"
+          "value": "SAMEORIGIN"
         },
         {
           "key": "Access-Control-Allow-Origin",

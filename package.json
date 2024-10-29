@@ -11,6 +11,11 @@
     "test:coverage": "jest --coverage"
   },
   "dependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "next": "^15.0.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "serve": "^14.0.0",
     "yup": "^1.2.0"
   },
@@ -27,7 +32,9 @@
   },
   "jest": {
     "testEnvironment": "jsdom",
-    "setupFilesAfterEnv": ["<rootDir>/jest.setup.js"],
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest.setup.js"
+    ],
     "moduleNameMapper": {
       "\\.(css|less|scss|sass)$": "<rootDir>/__mocks__/styleMock.js",
       "\\.(html)$": "<rootDir>/__mocks__/fileMock.js"
@@ -38,11 +45,16 @@
     "transformIgnorePatterns": [
       "/node_modules/(?!yup|@babel).+\\.js$"
     ],
-    "moduleDirectories": ["node_modules", "src"],
-    "testPathIgnorePatterns": ["/node_modules/"],
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ],
     "verbose": true,
     "testEnvironmentOptions": {
       "url": "http://localhost"
     }
   }
-} 
+}
