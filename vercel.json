@@ -12,19 +12,19 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self' https://*.webflow.io https://*.koninklijkeloop.nl https://fonts.googleapis.com https://fonts.gstatic.com https://esm.sh https://*.vercel.live; connect-src 'self' https://*.pusher.com wss://*.pusher.com https://*.vercel.live https://*.google.com https://*.googleusercontent.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://vercel.live; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://esm.sh https://*.vercel.live https://vercel.live https://*.google.com https://*.googleusercontent.com; script-src-elem 'self' 'unsafe-inline' https://esm.sh https://*.vercel.live https://vercel.live https://*.google.com https://*.googleusercontent.com; frame-src 'self' https://*.vercel.live https://vercel.live; frame-ancestors 'self' https://*.webflow.io https://*.koninklijkeloop.nl https://vercel.live; img-src 'self' https://*.webflow.io https://*.koninklijkeloop.nl https://cdn.prod.website-files.com data:; font-src 'self' https://fonts.gstatic.com https://vercel.live"
+          "value": "default-src 'self' https://*.webflow.io https://*.koninklijkeloop.nl https://fonts.googleapis.com https://fonts.gstatic.com https://esm.sh https://*.vercel.app; connect-src 'self' https://*.pusher.com wss://*.pusher.com https://*.vercel.app https://*.google.com https://*.googleusercontent.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://esm.sh https://*.vercel.app https://*.google.com https://*.googleusercontent.com; frame-src 'self' https://*.vercel.app; frame-ancestors 'self' https://*.webflow.io https://*.koninklijkeloop.nl; img-src 'self' https://*.webflow.io https://*.koninklijkeloop.nl https://cdn.prod.website-files.com data:; font-src 'self' https://fonts.gstatic.com"
         },
         {
           "key": "X-Frame-Options",
-          "value": "ALLOW-FROM https://*.webflow.io https://*.koninklijkeloop.nl https://vercel.live"
+          "value": "ALLOW-FROM https://*.webflow.io https://*.koninklijkeloop.nl"
         },
         {
           "key": "Access-Control-Allow-Origin",
-          "value": "*"
+          "value": "https://*.webflow.io, https://*.koninklijkeloop.nl"
         },
         {
           "key": "Access-Control-Allow-Methods",
-          "value": "GET, POST, PUT, DELETE, OPTIONS"
+          "value": "GET, POST, OPTIONS"
         },
         {
           "key": "Access-Control-Allow-Headers",
