@@ -6,15 +6,6 @@
       "use": "@vercel/static"
     }
   ],
-  "routes": [
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -40,6 +31,12 @@
           "value": "frame-ancestors 'self' https://*.webflow.io https://*.koninklijkeloop.nl"
         }
       ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 } 
