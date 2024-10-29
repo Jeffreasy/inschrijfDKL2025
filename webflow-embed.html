@@ -1,34 +1,36 @@
 <!-- Kopieer deze code naar je Webflow "Embed" element -->
-<div class="form-container">
+<div class="koninklijke-form-container">
   <iframe 
     id="inschrijf-form-iframe"
-    src="https://inschrijf-dkl2025.vercel.app"
-    width="100%"
-    height="0"
-    frameborder="0"
+    src="https://inschrijfdkl2025.vercel.app"
+    style="width: 100%; border: none; min-height: 500px;"
     scrolling="no"
-    style="width: 1px; min-width: 100%; border: none;"
   ></iframe>
-
-  <script>
-    // Automatische hoogte aanpassing
-    window.addEventListener('message', function(event) {
-      // Vervang dit met jouw Vercel URL
-      if (event.origin === 'https://inschrijf-dkl2025.vercel.app') {
-        if (event.data.type === 'resize') {
-          const iframe = document.getElementById('inschrijf-form-iframe');
-          iframe.style.height = event.data.height + 'px';
-        }
-      }
-    });
-  </script>
 </div>
 
 <style>
-  .form-container {
+  .koninklijke-form-container {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
   }
-</style> 
+
+  #inschrijf-form-iframe {
+    width: 1px;
+    min-width: 100%;
+    border: 0;
+  }
+</style>
+
+<script>
+  window.addEventListener('message', function(event) {
+    // Controleer of het bericht van jouw Vercel domein komt
+    if (event.origin === 'https://inschrijfdkl2025.vercel.app') {
+      const iframe = document.getElementById('inschrijf-form-iframe');
+      if (event.data.type === 'resize') {
+        // Pas de iframe hoogte aan
+        iframe.style.height = event.data.height + 'px';
+      }
+    }
+  });
+</script> 
