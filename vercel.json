@@ -1,33 +1,15 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/next"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/$1",
-      "headers": {
-        "Access-Control-Allow-Origin": "https://www.dekoninklijkeloop.nl",
-        "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-        "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, Accept"
-      }
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self' https://*.webflow.io https://*.koninklijkeloop.nl https://fonts.googleapis.com https://fonts.gstatic.com; connect-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' 'unsafe-eval'; frame-ancestors 'self' https://*.webflow.io https://*.koninklijkeloop.nl; img-src 'self' data: https://*.webflow.io https://*.koninklijkeloop.nl; font-src 'self' https://fonts.gstatic.com"
+          "value": "default-src 'self'; frame-ancestors 'self' https://*.webflow.io https://*.koninklijkeloop.nl https://*.vercel.app; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live https://*.vercel.live; connect-src 'self' https://*.vercel.live https://*.vercel.app; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.vercel.app"
         },
         {
           "key": "X-Frame-Options",
-          "value": "ALLOW-FROM https://*.webflow.io https://*.koninklijkeloop.nl"
+          "value": "ALLOW-FROM https://*.webflow.io https://*.koninklijkeloop.nl https://*.vercel.app"
         }
       ]
     }
