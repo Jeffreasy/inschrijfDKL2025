@@ -1,23 +1,14 @@
 module.exports = {
-  reactStrictMode: true,
   async headers() {
     return [
       {
         source: '/(.*)',
         headers: [
           {
-            key: 'X-Frame-Options',
-            value: 'SAMEORIGIN',
+            key: 'Access-Control-Allow-Origin',
+            value: 'https://www.uwwebflowdomein.com',
           },
         ],
-      },
-    ]
-  },
-  async rewrites() {
-    return [
-      {
-        source: '/:path*',
-        destination: '/:path*',
       },
     ]
   },
