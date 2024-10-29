@@ -1,6 +1,7 @@
-<!-- Kopieer deze code naar je Webflow "Embed" element -->
+<!-- Kopieer deze code naar een "Embed" element in Webflow -->
 <div class="koninklijke-form-container">
   <iframe 
+    loading="lazy"
     id="inschrijf-form-iframe"
     src="https://jouw-vercel-url.vercel.app"
     style="width: 100%; border: none; min-height: 500px;"
@@ -14,22 +15,37 @@
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 20px;
   }
 
   #inschrijf-form-iframe {
     width: 1px;
     min-width: 100%;
     border: 0;
+    transition: height 0.3s ease;
   }
 </style>
 
 <script>
-  window.addEventListener('message', function(event) {
+  // Verbeterde performance met debounce
+  function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
+
+  window.addEventListener('message', debounce(function(event) {
     if (event.origin === 'https://jouw-vercel-url.vercel.app') {
       const iframe = document.getElementById('inschrijf-form-iframe');
       if (event.data.type === 'resize') {
         iframe.style.height = event.data.height + 'px';
       }
     }
-  });
+  }, 16)); // ~60fps
 </script> 

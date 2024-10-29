@@ -1,8 +1,7 @@
-import React from 'react'
-import { NextPage } from 'next'
+import { NextPage } from 'next';
 
 interface ErrorProps {
-  statusCode?: number
+  statusCode?: number;
 }
 
 const Error: NextPage<ErrorProps> = ({ statusCode }) => {
@@ -14,7 +13,7 @@ const Error: NextPage<ErrorProps> = ({ statusCode }) => {
         </h1>
         <p className="text-xl text-gray-600 mb-8">
           {statusCode
-            ? `Er is een fout opgetreden op de server`
+            ? 'Er is een fout opgetreden op de server'
             : 'Er is een fout opgetreden in de client'}
         </p>
         <a
@@ -25,12 +24,12 @@ const Error: NextPage<ErrorProps> = ({ statusCode }) => {
         </a>
       </div>
     </div>
-  )
-}
+  );
+};
 
 Error.getInitialProps = ({ res, err }) => {
-  const statusCode = res ? res.statusCode : err ? err.statusCode : 404
-  return { statusCode }
-}
+  const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
+  return { statusCode };
+};
 
-export default Error
+export default Error;
