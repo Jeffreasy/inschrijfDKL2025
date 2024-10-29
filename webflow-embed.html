@@ -2,9 +2,10 @@
 <div class="koninklijke-form-container">
   <iframe 
     id="inschrijf-form-iframe"
-    src="https://inschrijfdkl2025.vercel.app"
+    src="JOUW-VERCEL-URL-HIER"
     style="width: 100%; border: none; min-height: 500px;"
     scrolling="no"
+    allow="clipboard-write"
   ></iframe>
 </div>
 
@@ -24,11 +25,9 @@
 
 <script>
   window.addEventListener('message', function(event) {
-    // Controleer of het bericht van jouw Vercel domein komt
-    if (event.origin === 'https://inschrijfdkl2025.vercel.app') {
+    if (event.origin === 'JOUW-VERCEL-URL-HIER') {
       const iframe = document.getElementById('inschrijf-form-iframe');
       if (event.data.type === 'resize') {
-        // Pas de iframe hoogte aan
         iframe.style.height = event.data.height + 'px';
       }
     }
