@@ -17,7 +17,8 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "serve": "^14.0.0",
-    "yup": "^1.2.0"
+    "yup": "^1.2.0",
+    "@vercel/analytics": "^1.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.22.5",
