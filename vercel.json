@@ -9,7 +9,12 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/$1"
+      "dest": "/$1",
+      "headers": {
+        "Access-Control-Allow-Origin": "https://www.dekoninklijkeloop.nl",
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+        "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, Accept"
+      }
     }
   ],
   "headers": [
@@ -22,19 +27,7 @@
         },
         {
           "key": "X-Frame-Options",
-          "value": "SAMEORIGIN"
-        },
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "https://*.webflow.io, https://*.koninklijkeloop.nl"
-        },
-        {
-          "key": "Access-Control-Allow-Methods",
-          "value": "GET, POST, OPTIONS"
-        },
-        {
-          "key": "Access-Control-Allow-Headers",
-          "value": "X-Requested-With, Content-Type, Accept"
+          "value": "ALLOW-FROM https://*.webflow.io https://*.koninklijkeloop.nl"
         }
       ]
     }
