@@ -7,29 +7,17 @@ const nextConfig = {
         source: '/(.*)',
         headers: [
           {
-            key: 'Access-Control-Allow-Origin',
-            value: '*', // Vervang dit later met uw specifieke Webflow domein voor betere beveiliging
-          },
-          {
-            key: 'Access-Control-Allow-Methods',
-            value: 'GET,OPTIONS,PATCH,DELETE,POST,PUT',
-          },
-          {
-            key: 'Access-Control-Allow-Headers',
-            value: 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version',
+            key: 'Content-Security-Policy',
+            value: "frame-ancestors 'self' https://*.webflow.io https://*.webflow.com https://jouw-domain.nl",
           },
           {
             key: 'X-Frame-Options',
-            value: 'ALLOW-FROM https://jeffrey-portfolio-591ef2.webflow.io/inschrijving-2025', // Vervang dit met uw Webflow domein
-          },
-          {
-            key: 'Content-Security-Policy',
-            value: "frame-ancestors 'self' https://jeffrey-portfolio-591ef2.webflow.io/inschrijving-2025", // Vervang dit met uw Webflow domein
+            value: 'ALLOW-FROM https://*.webflow.io https://*.webflow.com https://jouw-domain.nl',
           },
         ],
       },
-    ];
+    ]
   },
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig

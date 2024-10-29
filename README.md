@@ -17,4 +17,10 @@ Inschrijfformulier voor de Koninklijke loop 2024.
 
 ## Deployment
 
-Het project wordt automatisch gedeployed naar Vercel bij elke push naar de main branch. 
+Deze applicatie is gedeployed op Vercel. Voor een nieuwe deployment:
+
+1. Push changes naar main branch
+2. Vercel zal automatisch deployen
+3. Check de deployment op: https://jouw-vercel-url.vercel.app
+
+Voor handmatige deployment:

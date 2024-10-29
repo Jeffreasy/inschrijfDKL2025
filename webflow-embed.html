@@ -2,7 +2,7 @@
 <div class="koninklijke-form-container">
   <iframe 
     id="inschrijf-form-iframe"
-    src="JOUW-VERCEL-URL-HIER"
+    src="https://jouw-vercel-url.vercel.app"
     style="width: 100%; border: none; min-height: 500px;"
     scrolling="no"
     allow="clipboard-write"
@@ -25,7 +25,7 @@
 
 <script>
   window.addEventListener('message', function(event) {
-    if (event.origin === 'JOUW-VERCEL-URL-HIER') {
+    if (event.origin === 'https://jouw-vercel-url.vercel.app') {
       const iframe = document.getElementById('inschrijf-form-iframe');
       if (event.data.type === 'resize') {
         iframe.style.height = event.data.height + 'px';
