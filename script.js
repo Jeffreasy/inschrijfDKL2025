@@ -68,6 +68,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       const formData = new FormData(elements.form);
       const formDataObject = Object.fromEntries(formData.entries());
 
+      formDataObject.voorwaarden = elements.voorwaardenCheckbox.checked;
+
       try {
         await validationSchema.validate(formDataObject, { abortEarly: false });
         return true;
@@ -83,8 +85,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       const isFormValid = validateForm();
       const isCheckboxChecked = elements.voorwaardenCheckbox.checked;
       
-      elements.submitButton.disabled = !isFormValid || !isCheckboxChecked;
-      elements.submitButton.classList.toggle('active', isFormValid && isCheckboxChecked);
+      elements.submitButton.disabled = !isCheckboxChecked;
+      elements.submitButton.classList.toggle('active', isCheckboxChecked);
     };
 
     const trackFormSubmission = (formData) => {
@@ -238,7 +240,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         }, DEBOUNCE_DELAY));
       });
 
-      elements.voorwaardenCheckbox.addEventListener('change', updateSubmitButtonState);
+      elements.voorwaardenCheckbox.addEventListener('change', () => {
+        clearError('voorwaarden');
+        updateSubmitButtonState();
+      });
       elements.form.addEventListener('submit', (e) => {
         e.preventDefault();
         handleSubmit(e).catch(error => {

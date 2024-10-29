@@ -74,7 +74,8 @@ export const initModal = (elements, formState) => {
     voorwaardenCheckbox.setAttribute('aria-disabled', 'false');
     closeModal();
     
-    voorwaardenCheckbox.dispatchEvent(new Event('change'));
+    voorwaardenCheckbox.dispatchEvent(new Event('change', { bubbles: true }));
+    updateSubmitButtonState();
   });
 
   voorwaardenModal.addEventListener('click', (e) => {
