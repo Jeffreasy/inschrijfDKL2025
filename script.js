@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     try {
       initDropdown(elements);
-      initModal(elements, formState);
+      initModal(elements, formState, updateSubmitButtonState);
       initForm();
 
       if (document.querySelector('[data-tooltip]')) {

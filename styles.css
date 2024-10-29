@@ -166,6 +166,7 @@
   .afstand-dropdown {
     position: relative;
     width: 100%;
+    z-index: 1000;
   }
   
   .dropdown-trigger {
@@ -216,7 +217,7 @@
     background: white;
     border-radius: 12px;
     padding: 0.5rem;
-    z-index: 100;
+    z-index: 1001;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     border: 2px solid #E2E8F0;
     max-height: 300px;

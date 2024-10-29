@@ -1,4 +1,4 @@
-export const initModal = (elements, formState) => {
+export const initModal = (elements, formState, updateSubmitButtonState) => {
   const { voorwaardenButton, voorwaardenModal, modalClose, modalBody, confirmReadingBtn, voorwaardenCheckbox } = elements;
 
   // Voorwaarden tekst direct in de code
@@ -75,7 +75,7 @@ export const initModal = (elements, formState) => {
     closeModal();
     
     voorwaardenCheckbox.dispatchEvent(new Event('change', { bubbles: true }));
-    updateSubmitButtonState();
+    if (updateSubmitButtonState) updateSubmitButtonState();
   });
 
   voorwaardenModal.addEventListener('click', (e) => {
