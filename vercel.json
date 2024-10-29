@@ -5,7 +5,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; frame-ancestors 'self' https://*.webflow.io https://*.koninklijkeloop.nl https://*.vercel.app; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live https://*.vercel.live; connect-src 'self' https://*.vercel.live https://*.vercel.app; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.vercel.app"
+          "value": "default-src 'self'; connect-src 'self' https://*.vercel.live https://*.vercel.app https://inschrijf-dkl-2025-g2jq4cenm-jeffreys-projects-c48521c1.vercel.app; frame-ancestors 'self' https://*.webflow.io https://*.koninklijkeloop.nl https://*.vercel.app; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live https://*.vercel.live; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.vercel.app"
         },
         {
           "key": "X-Frame-Options",
