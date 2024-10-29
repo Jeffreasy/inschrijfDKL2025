@@ -1,0 +1,34 @@
+<!-- Kopieer deze code naar je Webflow "Embed" element -->
+<div class="form-container">
+  <iframe 
+    id="inschrijf-form-iframe"
+    src="https://inschrijf-dkl2025.vercel.app"
+    width="100%"
+    height="0"
+    frameborder="0"
+    scrolling="no"
+    style="width: 1px; min-width: 100%; border: none;"
+  ></iframe>
+
+  <script>
+    // Automatische hoogte aanpassing
+    window.addEventListener('message', function(event) {
+      // Vervang dit met jouw Vercel URL
+      if (event.origin === 'https://inschrijf-dkl2025.vercel.app') {
+        if (event.data.type === 'resize') {
+          const iframe = document.getElementById('inschrijf-form-iframe');
+          iframe.style.height = event.data.height + 'px';
+        }
+      }
+    });
+  </script>
+</div>
+
+<style>
+  .form-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+</style> 

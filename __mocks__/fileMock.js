@@ -1,55 +1,13 @@
-<!DOCTYPE html>
+module.exports = {
+  html: `<!DOCTYPE html>
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Inschrijfformulier voor de Koninklijke loop 18 mei 2024">
     <title>Inschrijfformulier - Koninklijke loop 2024</title>
-    <link rel="stylesheet" href="styles.css">
-    <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'self' https://*.webflow.io https://*.koninklijkeloop.nl;">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="form-wrapper">
-        <header class="form-header">
-            <div class="header-content">
-                <img 
-                    src="https://cdn.prod.website-files.com/65c6896e8519c5d0bae5586f/664b8c1e593a1e81556b4238_0760849fb8.png" 
-                    alt="Koninklijke Loop Logo" 
-                    class="header-logo"
-                    onerror="this.onerror=null; this.src='fallback-logo.png';"
-                />
-                <div class="header-text">
-                    <h1>Welkom bij de Koninklijke Loop 2025!</h1>
-                    <p class="header-intro">De sponsorloop van mensen met een beperking Voor een goed doel!</p>
-                </div>
-                <div class="event-details">
-                    <div class="event-detail">
-                        <span class="icon">📅</span>
-                        <div>
-                            <strong>Datum:</strong>
-                            <span>Zaterdag 17 mei 2025</span>
-                        </div>
-                    </div>
-                    <div class="event-detail">
-                        <span class="icon">📍</span>
-                        <div>
-                            <strong>Locatie:</strong>
-                            <span>De Grote Kerk Apeldoorn</span>
-                        </div>
-                    </div>
-                    <div class="event-detail">
-                        <span class="icon">⭐</span>
-                        <div>
-                            <strong>Afstanden:</strong>
-                            <span>2.5, 5, 10 en 15 KM</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
         <form id="inschrijf-form" class="signup-form" novalidate>
             <div class="form-progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
                 <div class="progress-bar"></div>
@@ -124,22 +82,6 @@
                     <div id="voorwaarden-error" class="error-message" aria-live="polite"></div>
                 </div>
             </div>
-            <div class="support-info">
-                <h3>Hulp nodig bij het inschrijven?</h3>
-                <p>We helpen je graag verder!</p>
-                <div class="contact-options">
-                    <div class="contact-option">
-                        <div class="icon">📧</div>
-                        <a href="mailto:support@koninklijkeloop.nl">support@koninklijkeloop.nl</a>
-                        <span>Reactie binnen 24 uur</span>
-                    </div>
-                    <div class="contact-option">
-                        <div class="icon">📞</div>
-                        <a href="tel:+31612345678">06-12345678</a>
-                        <span>Bereikbaar op werkdagen 9:00-17:00</span>
-                    </div>
-                </div>
-            </div>
             <div class="submit-button-wrapper">
                 <button type="submit" class="submit-button" disabled>
                     <span class="button-text">Inschrijving versturen</span>
@@ -148,7 +90,7 @@
             </div>
         </form>
     </div>
-    <div class="voorwaarden-modal">
+    <div class="voorwaarden-modal" role="dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h2>Algemene Voorwaarden</h2>
@@ -176,13 +118,6 @@
             <button id="new-registration" class="action-button">Nieuwe Inschrijving</button>
         </div>
     </div>
-    <script type="importmap">
-    {
-        "imports": {
-            "yup": "https://esm.sh/yup@1.2.0"
-        }
-    }
-    </script>
-    <script src="script.js" type="module"></script>
 </body>
-</html>
+</html>`
+}; 

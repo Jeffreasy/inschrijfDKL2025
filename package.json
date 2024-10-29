@@ -1,0 +1,48 @@
+{
+  "name": "koninklijke-loop-inschrijving",
+  "version": "1.0.0",
+  "description": "Inschrijfformulier voor de Koninklijke loop 2024",
+  "scripts": {
+    "start": "serve",
+    "dev": "serve",
+    "build": "echo 'No build step needed'",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "dependencies": {
+    "serve": "^14.0.0",
+    "yup": "^1.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.5",
+    "@babel/preset-env": "^7.22.5",
+    "@testing-library/dom": "^9.3.1",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/user-event": "^14.4.3",
+    "babel-jest": "^29.5.0",
+    "jest": "^29.5.0",
+    "jest-environment-jsdom": "^29.5.0",
+    "whatwg-fetch": "^3.6.2"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": ["<rootDir>/jest.setup.js"],
+    "moduleNameMapper": {
+      "\\.(css|less|scss|sass)$": "<rootDir>/__mocks__/styleMock.js",
+      "\\.(html)$": "<rootDir>/__mocks__/fileMock.js"
+    },
+    "transform": {
+      "^.+\\.(js|jsx)$": "babel-jest"
+    },
+    "transformIgnorePatterns": [
+      "/node_modules/(?!yup|@babel).+\\.js$"
+    ],
+    "moduleDirectories": ["node_modules", "src"],
+    "testPathIgnorePatterns": ["/node_modules/"],
+    "verbose": true,
+    "testEnvironmentOptions": {
+      "url": "http://localhost"
+    }
+  }
+} 

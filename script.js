@@ -1,27 +1,23 @@
+// Importeer Yup als ES module
+import * as Yup from 'yup';
+
 // Gebruik van ES6 modules (voeg type="module" toe aan je script tag in HTML)
-import { debounce, showError, clearError, showErrorBoundary, updateProgress } from './utils.js';
+import { debounce, showError, clearError, showErrorBoundary, updateProgress, printConfirmation } from './utils.js';
 import { initModal } from './modal.js';
 import { initDropdown } from './dropdown.js';
 
-let Yup;
-
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyiUh34fDbDyxwUpO99nHYGSTdtuhVDy4_-aYnRKCQN4x4yIMPlbXk_w4bSGkcamHc/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxDXLlaCyCHbPC5_WKc4zbQ7dxJOLzxIyplU5nVb7lJfEkKAQXFsxm5esX2PcCdc1Z1/exec';
 const DEBOUNCE_DELAY = 300;
 const ERROR_DISPLAY_DURATION = 5000;
+
+const SUBMISSION_LIMIT = 5; // Max pogingen
+const COOLDOWN_PERIOD = 60000; // 1 minuut in milliseconden
+let submissionAttempts = 0;
+let lastSubmissionTime = 0;
 
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     console.log('DOMContentLoaded event fired');
-    // Wacht tot Yup is geladen
-    await window.yupLoaded;
-    console.log('Yup loaded successfully');
-    Yup = window.Yup;
-
-    if (!Yup) {
-      throw new Error('Yup is not available after loading');
-    }
-
-    console.log('Yup version:', Yup.version);
 
     const formState = {
       hasScrolledTerms: false,
@@ -50,9 +46,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const validationSchema = Yup.object().shape({
       naam: Yup.string().required('Vul een geldige naam in').min(2, 'Naam moet minimaal 2 tekens bevatten'),
-      email: Yup.string().required('Vul een geldig e-mailadres in').email('E-mailadres is ongeldig'),
+      email: Yup.string()
+        .required('Vul een geldig e-mailadres in')
+        .email('E-mailadres is ongeldig')
+        .test('domain', 'Gebruik een geldig e-mailadres', 
+          value => value && !value.endsWith('.test'))
+        .test('format', 'E-mailadres moet een geldig formaat hebben',
+          value => value && /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)),
       afstand: Yup.string().required('Kies een afstand'),
       rol: Yup.string().required('Kies een rol'),
+      begeleiding: Yup.string().required('Geef aan of je begeleiding nodig hebt'),
       voorwaarden: Yup.boolean().oneOf([true], 'Je moet akkoord gaan met de voorwaarden')
     });
 
@@ -84,8 +87,34 @@ document.addEventListener('DOMContentLoaded', async () => {
       elements.submitButton.classList.toggle('active', isFormValid && isCheckboxChecked);
     };
 
+    const trackFormSubmission = (formData) => {
+      try {
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'form_submission', {
+            'event_category': 'Inschrijving',
+            'event_label': formData.afstand,
+            'rol': formData.rol,
+            'begeleiding_nodig': formData.begeleiding
+          });
+        }
+      } catch (error) {
+        console.error('Analytics error:', error);
+      }
+    };
+
     const handleSubmit = async (e) => {
       e.preventDefault();
+      
+      // Rate limiting check
+      const now = Date.now();
+      if (submissionAttempts >= SUBMISSION_LIMIT && (now - lastSubmissionTime) < COOLDOWN_PERIOD) {
+        showErrorBoundary('Te veel pogingen. Probeer het over een minuut opnieuw.');
+        return;
+      }
+
+      submissionAttempts++;
+      lastSubmissionTime = now;
+
       isFormSubmitted = true;
 
       if (!await validateForm(true)) {
@@ -111,6 +140,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
         const responseData = await response.json();
+        trackFormSubmission(formDataObject);
         showSuccessOverlay(formDataObject);
         
       } catch (error) {
@@ -136,6 +166,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         <p><strong>E-mail:</strong> ${formData.email}</p>
         <p><strong>Afstand:</strong> ${formData.afstand} KM</p>
         <p><strong>Rol:</strong> ${formData.rol}</p>
+        <p><strong>Begeleiding nodig:</strong> ${formData.begeleiding}</p>
         <p><strong>Bijzonderheden:</strong> ${formData.bijzonderheden || 'Geen'}</p>
       `;
 
@@ -145,6 +176,19 @@ document.addEventListener('DOMContentLoaded', async () => {
         successOverlay.style.display = 'none';
         resetForm();
       }, { once: true });
+
+      const actionButtons = document.createElement('div');
+      actionButtons.className = 'action-buttons';
+      actionButtons.innerHTML = `
+        <button id="print-confirmation" class="action-button">Print bevestiging</button>
+        <button id="new-registration" class="action-button">Nieuwe inschrijving</button>
+      `;
+
+      document.querySelector('.success-content').appendChild(actionButtons);
+
+      document.getElementById('print-confirmation').addEventListener('click', () => {
+        printConfirmation(formData);
+      });
     };
 
     const resetForm = () => {
@@ -218,10 +262,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       showErrorBoundary('Er is een fout opgetreden bij het laden van het formulier');
     }
   } catch (error) {
-    console.error('Error loading Yup or initializing form:', error);
-    console.error('Window Yup object:', window.Yup);
+    console.error('Error initializing form:', error);
     showErrorBoundary('Er is een fout opgetreden bij het laden van het formulier: ' + error.message);
-    // Voeg hier code toe om het formulier te verbergen of uit te schakelen
     document.getElementById('inschrijf-form').style.display = 'none';
     document.querySelector('.form-wrapper').innerHTML += '<p>Het formulier kan momenteel niet worden geladen. Probeer het later opnieuw.</p>';
   }
