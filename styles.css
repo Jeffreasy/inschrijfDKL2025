@@ -1182,4 +1182,165 @@
     background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
     pointer-events: none;
   }
+  
+  /* Form footer styling */
+  .form-footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid #f0f0f0;
+  }
+  
+  /* Voorwaarden sectie */
+  .voorwaarden-sectie {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  .voorwaarden-button {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background: white;
+    border: 2px solid var(--primary-color);
+    border-radius: 12px;
+    color: var(--primary-color);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--text-base);
+    transition: all 0.3s ease;
+  }
+  
+  .voorwaarden-button:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+  }
+  
+  .voorwaarden-button .icon {
+    font-size: 1.25rem;
+  }
+  
+  .checkbox-wrapper {
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  .checkbox-field {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+  }
+  
+  .checkbox-field:hover {
+    background: #f0f0f0;
+  }
+  
+  /* Support info styling */
+  .support-info {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  
+  .support-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .support-header .icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+  }
+  
+  .support-header h3 {
+    font-family: var(--font-heading);
+    font-size: var(--text-xl);
+    color: var(--primary-color);
+    margin-bottom: 0.25rem;
+  }
+  
+  .support-header p {
+    color: #666;
+    font-size: var(--text-base);
+  }
+  
+  .contact-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .contact-option {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+  }
+  
+  .contact-option:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contact-icon {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+  }
+  
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .contact-details a {
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+    font-size: var(--text-lg);
+  }
+  
+  .response-time {
+    color: #666;
+    font-size: var(--text-sm);
+  }
+  
+  /* Submit section */
+  .submit-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+  }
+  
+  .submit-button {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 2.5rem;
+    min-width: 300px;
+  }
+  
+  .button-icon {
+    font-size: 1.25rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .submit-button:hover .button-icon {
+    transform: translateX(4px);
+  }
 

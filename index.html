@@ -115,37 +115,56 @@
                 <label for="bijzonderheden">Bijzonderheden:</label>
                 <textarea id="bijzonderheden" name="bijzonderheden" class="input-field"></textarea>
             </div>
-            <div class="voorwaarden-sectie">
-                <button type="button" class="voorwaarden-button">Algemene voorwaarden</button>
-                <div class="checkbox-field">
-                    <input type="checkbox" id="voorwaarden-checkbox" name="voorwaarden" required disabled>
-                    <label for="voorwaarden-checkbox">
-                        Ik ga akkoord met de voorwaarden <span class="required" aria-label="verplicht">*</span>
-                    </label>
-                    <div id="voorwaarden-error" class="error-message" aria-live="polite"></div>
-                </div>
-            </div>
-            <div class="support-info">
-                <h3>Hulp nodig bij het inschrijven?</h3>
-                <p>We helpen je graag verder!</p>
-                <div class="contact-options">
-                    <div class="contact-option">
-                        <div class="icon">📧</div>
-                        <a href="mailto:support@koninklijkeloop.nl">support@koninklijkeloop.nl</a>
-                        <span>Reactie binnen 24 uur</span>
-                    </div>
-                    <div class="contact-option">
-                        <div class="icon">📞</div>
-                        <a href="tel:+31612345678">06-12345678</a>
-                        <span>Bereikbaar op werkdagen 9:00-17:00</span>
+            <div class="form-footer">
+                <div class="voorwaarden-sectie">
+                    <button type="button" class="voorwaarden-button">
+                        <span class="icon">📋</span>
+                        Algemene voorwaarden
+                    </button>
+                    <div class="checkbox-wrapper">
+                        <div class="checkbox-field">
+                            <input type="checkbox" id="voorwaarden-checkbox" name="voorwaarden" required disabled>
+                            <label for="voorwaarden-checkbox">
+                                Ik ga akkoord met de voorwaarden <span class="required" aria-label="verplicht">*</span>
+                            </label>
+                        </div>
+                        <div id="voorwaarden-error" class="error-message" aria-live="polite"></div>
                     </div>
                 </div>
-            </div>
-            <div class="submit-button-wrapper">
-                <button type="submit" class="submit-button" disabled>
-                    <span class="button-text">Inschrijving versturen</span>
-                    <span class="loading-spinner"></span>
-                </button>
+
+                <div class="support-info">
+                    <div class="support-header">
+                        <span class="icon">💡</span>
+                        <div>
+                            <h3>Hulp nodig bij het inschrijven?</h3>
+                            <p>We helpen je graag verder!</p>
+                        </div>
+                    </div>
+                    <div class="contact-options">
+                        <div class="contact-option">
+                            <div class="contact-icon">📧</div>
+                            <div class="contact-details">
+                                <a href="mailto:support@koninklijkeloop.nl">support@koninklijkeloop.nl</a>
+                                <span class="response-time">Reactie binnen 24 uur</span>
+                            </div>
+                        </div>
+                        <div class="contact-option">
+                            <div class="contact-icon">📞</div>
+                            <div class="contact-details">
+                                <a href="tel:+31612345678">06-12345678</a>
+                                <span class="response-time">Bereikbaar op werkdagen 9:00-17:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="submit-section">
+                    <button type="submit" class="submit-button" disabled>
+                        <span class="button-text">Inschrijving versturen</span>
+                        <span class="button-icon">→</span>
+                        <span class="loading-spinner"></span>
+                    </button>
+                </div>
             </div>
         </form>
     </div>
