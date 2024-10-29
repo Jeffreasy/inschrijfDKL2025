@@ -12,7 +12,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "frame-ancestors 'self' https://*.webflow.io https://*.koninklijkeloop.nl"
+          "value": "default-src 'self' https://*.webflow.io https://*.koninklijkeloop.nl https://fonts.googleapis.com https://fonts.gstatic.com https://esm.sh; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://esm.sh; frame-ancestors 'self' https://*.webflow.io https://*.koninklijkeloop.nl; img-src 'self' https://*.webflow.io https://*.koninklijkeloop.nl https://cdn.prod.website-files.com data:"
         },
         {
           "key": "X-Frame-Options",
