@@ -1,56 +1,25 @@
-import React, { useState, useEffect } from 'react'
-import Head from 'next/head'
+'use client'
+
+import { useEffect } from 'react'
 
 export default function Home() {
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-
   useEffect(() => {
-    const iframe = document.getElementById('inschrijf-form-iframe') as HTMLIFrameElement
-    
-    const handleLoad = () => {
-      setLoading(false)
-    }
-
-    const handleError = () => {
-      setLoading(false)
-      setError('Er is een probleem opgetreden bij het laden van het formulier. Probeer het later opnieuw.')
-    }
-
-    iframe.addEventListener('load', handleLoad)
-    iframe.addEventListener('error', handleError)
-
-    return () => {
-      iframe.removeEventListener('load', handleLoad)
-      iframe.removeEventListener('error', handleError)
+    // Stuur een bericht naar de parent (Webflow) dat de app is geladen
+    if (window.parent) {
+      window.parent.postMessage({ type: 'APP_LOADED' }, '*')
     }
   }, [])
 
   return (
-    <div className="container mx-auto px-4">
-      <Head>
-        <title>Koninklijke Loop 2025 - Inschrijfformulier</title>
-        <meta name="description" content="Inschrijfformulier voor de Koninklijke Loop 2025" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className="py-8">
-        <h1 className="text-3xl font-bold mb-4">Koninklijke Loop 2025 - Inschrijfformulier</h1>
-        
-        {loading && <p className="text-gray-600">Formulier wordt geladen...</p>}
-        
-        {error && (
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4" role="alert">
-            <p>{error}</p>
-          </div>
-        )}
-        
-        <iframe 
-          id="inschrijf-form-iframe"
-          src="https://inschrijf-dkl-2025.vercel.app"
-          className="w-full border-0 min-h-[500px]"
-          style={{display: loading ? 'none' : 'block'}}
-        />
+    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+      <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
+        <h1 className="text-6xl font-bold">
+          Welkom bij het Inschrijfformulier
+        </h1>
+        <p className="mt-3 text-2xl">
+          Koninklijke Loop 2025
+        </p>
+        {/* Voeg hier uw formulier componenten toe */}
       </main>
     </div>
   )
